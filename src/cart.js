@@ -24,6 +24,7 @@ function addToCart(cart, product, quantity) {
   }
   return cart;
 }
+
 function changeQuantity(cart, productId, quantity) {
   // test 2. не принимает нулевое количество
   if (quantity <= 0) {
@@ -42,10 +43,17 @@ function changeQuantity(cart, productId, quantity) {
   item.quantity = quantity;
   return cart;
 }
+
 function removeFromCart(cart, productId) {
   return cart.filter(({id}) => id !== productId);
 }
-function calculateCartSubtotal() { return notImplemented(); }
+
+function calculateCartSubtotal(cart) {
+  return cart.reduce((sum, item) => {
+    return sum + item.price * item.quantity;
+  }, 0)
+}
+
 function calculateOrderTotal() { return notImplemented(); }
 
 const cartApi = { addToCart, changeQuantity, removeFromCart, calculateCartSubtotal, calculateOrderTotal };
