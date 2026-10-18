@@ -42,7 +42,9 @@ function changeQuantity(cart, productId, quantity) {
   item.quantity = quantity;
   return cart;
 }
-function removeFromCart() { return notImplemented(); }
+function removeFromCart(cart, productId) {
+  return cart.filter(({id}) => id !== productId);
+}
 function calculateCartSubtotal() { return notImplemented(); }
 function calculateOrderTotal() { return notImplemented(); }
 
